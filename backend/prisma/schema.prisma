@@ -9,6 +9,69 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model user {
+  id_kasir Int @id @default(autoincrement())
+  nama_kasir String
+  password String
+  email String
+  phone String
+  role role 
+  transaksi transaksi []
+}
+model barang {
+  id_barang Int @id @default(autoincrement())
+  nama_barang String
+  jenis_barang String
+  deskripsi String
+  harga Int
+  stock Int
+  id_suplier Int
+  suplier suplier @relation(fields: [id_suplier], references: [id_suplier])
+  detail_transaksi detail_transaksi []
+  
+}
+model suplier {
+  id_suplier Int @id @default(autoincrement())
+  nama_suplier String
+  phone String
+  alamat String
+  barang barang []
+}
+model transaksi {
+  id_transaksi Int @id @default(autoincrement())
+  tgl_transaksi DateTime @default(now())
+  id_kasir Int
+  nama_pelanggan String
+  status status
+  user user @relation(fields: [id_kasir], references: [id_kasir])
+  detail_transaksi detail_transaksi []
+}
+model detail_transaksi {
+  id_detail_transaksi Int @id @default(autoincrement())
+  id_transaksi Int
+  id_barang Int
+  harga Int
+  transaksi transaksi @relation(fields: [id_transaksi], references: [id_transaksi])
+  barang barang @relation(fields: [id_barang], references: [id_barang])
+
+
+}
+
+enum role {
+  kasir
+  admin
+  user
+}
+
+enum status {
+  belum_bayar
+  lunas
+}
+
+
+
+
