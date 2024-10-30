@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import md5 from "md5";
 
 const prisma = new PrismaClient();
 
