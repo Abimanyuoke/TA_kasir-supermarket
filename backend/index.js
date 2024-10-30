@@ -2,7 +2,7 @@ import express from 'express'
 import bodyParser from "body-parser"
 import cors from  "cors"  
 import dotenv from "dotenv"
-import kasirRoute from "./routes/kasir.route.js"
+import kasirRoute from "./routes/user.route.js"
 
 const app = express()
 
