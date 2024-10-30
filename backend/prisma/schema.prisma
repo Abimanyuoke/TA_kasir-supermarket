@@ -15,7 +15,7 @@ datasource db {
 
 model user {
   id_user Int @id @default(autoincrement())
-  nama_user String
+  nama_kasir String
   password String
   email String
   phone String
@@ -44,7 +44,7 @@ model suplier {
 model transaksi {
   id_transaksi Int @id @default(autoincrement())
   tgl_transaksi DateTime @default(now())
-  id_kasir Int
+  id_user Int
   nama_pelanggan String
   status status
   user user @relation(fields: [id_user], references: [id_user])
