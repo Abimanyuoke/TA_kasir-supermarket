@@ -28,8 +28,9 @@ model barang {
   jenis_barang String
   deskripsi String
   harga Int
-  stock Int
+  stok Int
   id_suplier Int
+  image String
   suplier suplier @relation(fields: [id_suplier], references: [id_suplier])
   detail_transaksi detail_transaksi []
   
@@ -37,8 +38,8 @@ model barang {
 model suplier {
   id_suplier Int @id @default(autoincrement())
   nama_suplier String
-  phone String
-  alamat String
+  phone_suplier String
+  alamat_suplier String
   barang barang []
 }
 model transaksi {
