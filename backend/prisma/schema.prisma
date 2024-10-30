@@ -54,11 +54,10 @@ model detail_transaksi {
   id_detail_transaksi Int @id @default(autoincrement())
   id_transaksi Int
   id_barang Int
-  harga Int
+  total_harga Int
+  quantyty Int
   transaksi transaksi @relation(fields: [id_transaksi], references: [id_transaksi])
   barang barang @relation(fields: [id_barang], references: [id_barang])
-
-
 }
 
 enum role {
