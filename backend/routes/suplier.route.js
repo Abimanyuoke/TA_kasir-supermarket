@@ -6,7 +6,7 @@ import {
     updateSuplier,
     addSuplier,
     deleteSuplier
-} from '../controllers/suplier_controller';
+} from '../controllers/suplier_controller.js';
 
 const app = express();
 app.use(express.json());

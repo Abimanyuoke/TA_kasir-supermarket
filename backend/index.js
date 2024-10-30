@@ -4,7 +4,7 @@ import cors from  "cors"
 import dotenv from "dotenv"
 import suplierRoute from "./routes/suplier.route.js"
 import userRoute from "./routes/user.route.js"
-import barangRoute from "./controllers/barang_controller.js"
+import barangRoute from "./routes/barang.route.js"
 
 const app = express()
 
