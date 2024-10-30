@@ -6,7 +6,7 @@ import {
     updateKasir,
     addKasir,
     deleteKasir
-} from '../controllers/kasir_controller.js';
+} from '../controllers/user_controller.js';
 
 const app = express();
 app.use(express.json());
