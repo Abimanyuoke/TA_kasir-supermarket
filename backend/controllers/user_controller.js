@@ -3,9 +3,9 @@ import md5 from "md5";
 
 const prisma = new PrismaClient();
 
-export const getAllKasir = async (req, res) => {
+export const getAllUser = async (req, res) => {
     try {
-     const response = await prisma.kasir.findMany()
+     const response = await prisma.user.findMany()
      res.status(200).json(response)
     } catch (error) {
      res.status(500).json({msg: error.message})
@@ -13,11 +13,11 @@ export const getAllKasir = async (req, res) => {
  }
  
  
- export const getKasirById = async (req, res) => {
+ export const getUserById = async (req, res) => {
     try {
-     const result = await prisma.kasir.findUnique({
+     const result = await prisma.user.findUnique({
          where:{
-             id_kasir: Number(req.params.id)
+             id_user: Number(req.params.id)
          }
      })
      res.status(200).json(result)
@@ -26,15 +26,16 @@ export const getAllKasir = async (req, res) => {
     }
  }
  
- export const addKasir = async (req, res) => {
+ export const addUser = async (req, res) => {
     try {
-     const {nama_kasir, password, email, phone} = req.body
-     const result = await prisma.kasir.create({
+     const {nama_user, password, email, phone, role} = req.body
+     const result = await prisma.user.create({
          data: {
-             nama_kasir: nama_kasir,
+             nama_user: nama_user,
              password: md5(password),
              email : email,
-             phone : phone
+             phone : phone, 
+             role : role
          }
      })
      res.status(200).json(result)
@@ -44,18 +45,19 @@ export const getAllKasir = async (req, res) => {
     }
  }
  
- export const updateKasir = async (req, res) => {
+ export const updateUser = async (req, res) => {
     try {
-     const {nama_kasir, password, email, phone} = req.body
-     const result = await prisma.kasir.update({
+     const {nama_user, password, email, phone, role} = req.body
+     const result = await prisma.user.update({
          where:{
-             id_kasir: Number(req.params.id)
+             id_user: Number(req.params.id)
          },
          data: {
-            nama_kasir: nama_kasir,
+            nama_user: nama_user,
             password: md5(password),
             email : email,
-            phone : phone
+            phone : phone,
+            role : role
          }
      })
      res.status(200).json(result)
@@ -64,11 +66,11 @@ export const getAllKasir = async (req, res) => {
     }
  }
  
- export const deleteKasir = async (req, res) => {
+ export const deleteUser = async (req, res) => {
     try {
-     const result = await prisma.kasir.delete({
+     const result = await prisma.user.delete({
          where: {
-             id_kasir: Number(req.params.id)
+             id_user: Number(req.params.id)
          },
      })
      res.status(200).json(result)
